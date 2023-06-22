@@ -97,7 +97,7 @@ list(APPEND RE_DEFINITIONS
  -DVER_PATCH=${PROJECT_VERSION_PATCH}
 )
 
-set(RE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../../../packages/re_x64-linux/include/re/)
+set(RE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../../../../packages/re_x64-linux/include/re/)
 add_definitions(${RE_DEFINITIONS})
 
 include_directories(
@@ -233,7 +233,7 @@ endif()
 #
 # Main target library
 #
-set(RE_LIBRARIES ${CMAKE_CURRENT_SOURCE_DIR}/../../../packages/re_x64-linux/lib/libre.so)
+set(RE_LIBRARIES ${CMAKE_CURRENT_SOURCE_DIR}/../../../../packages/re_x64-linux/lib/libre.so)
 set(LINKLIBS ${RE_LIBRARIES} Threads::Threads)
 
 if(ZLIB_FOUND)
