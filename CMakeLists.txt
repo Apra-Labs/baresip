@@ -97,7 +97,12 @@ list(APPEND RE_DEFINITIONS
  -DVER_PATCH=${PROJECT_VERSION_PATCH}
 )
 
-set(RE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../../../../packages/re_x64-linux/include/re/)
+if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  set(RE_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../_build/vcpkg_installed/x64-linux/include/re/")
+else
+  set(RE_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../_build/vcpkg_installed/arm64-linux/include/re/")
+endif()
+
 add_definitions(${RE_DEFINITIONS})
 
 include_directories(
