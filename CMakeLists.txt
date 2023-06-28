@@ -36,7 +36,7 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake)
 
 include(GNUInstallDirs)
 include(CheckIncludeFile)
-find_package(RE REQUIRED)
+#find_package(RE REQUIRED) WE ARE PROVIDING PATH TO FIND RE
 
 ##############################################################################
 #
@@ -96,6 +96,12 @@ list(APPEND RE_DEFINITIONS
   -DVER_MINOR=${PROJECT_VERSION_MINOR}
   -DVER_PATCH=${PROJECT_VERSION_PATCH}
 )
+
+if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  set(RE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../_build/vcpkg_installed/x64-linux/include/re/)
+else
+  set(RE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../_build/vcpkg_installed/arm64-linux/include/re/)
+endif()
 
 add_definitions(${RE_DEFINITIONS})
 
@@ -232,6 +238,11 @@ endif()
 #
 # Main target library
 #
+if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  set(RE_LIBRARIES ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../_build/vcpkg_installed/x64-linux/lib/libre.so)
+else
+  set(RE_LIBRARIES ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../_build/vcpkg_installed/arm64-linux/lib/libre.so)
+endif()
 
 set(LINKLIBS ${RE_LIBRARIES} Threads::Threads)
 
