@@ -99,9 +99,9 @@ list(APPEND RE_DEFINITIONS
 
 if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
   set(RE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../_build/vcpkg_installed/x64-linux/include/re/)
-else
+else()
   set(RE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../_build/vcpkg_installed/arm64-linux/include/re/)
-endif()
+endif(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
 
 add_definitions(${RE_DEFINITIONS})
 
@@ -240,9 +240,9 @@ endif()
 #
 if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
   set(RE_LIBRARIES ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../_build/vcpkg_installed/x64-linux/lib/libre.so)
-else
+else()
   set(RE_LIBRARIES ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../_build/vcpkg_installed/arm64-linux/lib/libre.so)
-endif()
+endif(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
 
 set(LINKLIBS ${RE_LIBRARIES} Threads::Threads)
 
