@@ -98,9 +98,9 @@ list(APPEND RE_DEFINITIONS
 )
 
 if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
-  set(RE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../_build/vcpkg_installed/x64-linux/include/re/)
+  set(RE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../_build/vcpkg_installed/x64-linux/debug/include/re/)
 else()
-  set(RE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../_build/vcpkg_installed/arm64-linux/include/re/)
+  set(RE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../_build/vcpkg_installed/arm64-linux/debug/include/re/)
 endif(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
 
 add_definitions(${RE_DEFINITIONS})
